@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    var user = Session["AdminLoginUser"] as Dance.Eticaret.Model.Entity.User;
+}
+
+<h2>Sayın @user.Name @user.LastName Hoşgeldin</h2>
+
+<ul>
+    <li>
+        <a href="/Admin/Users">Üyeler Yönetimi</a>
+    </li>
+    <li>
+        <a href="/Admin/DanceLessons">Ders Yönetimi</a>
+    </li>
+    <li>
+        <a href="/Admin/DanceTypes">Dans Türleri Yönetimi</a>
+    </li>
+</ul>

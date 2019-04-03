@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Let's Dance Admin Girişi</title>
+</head>
+<body>
+    <form method="post"> @*içindeki elemanların verilerini post et sayfaya gönder demiş oldum*@
+        <div>
+            @Html.Label("Email")
+            @Html.TextBox("Email") @*veritabanına gider burası*@
+            <br />
+            @Html.Label("Şifre")
+            @Html.Password("Password")
+            <br />
+            <button type="submit">Giriş Yap</button> @*veritabanına göndereceği için submit*@
+        </div>
+    </form>
+</body>
+</html>

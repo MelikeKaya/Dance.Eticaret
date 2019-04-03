@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Dance.Eticaret.Model.Entity.DanceType>
+
+@{
+    foreach (var item in Model)
+    {
+        <li class="item"><a class="list-group-item-heading" href="#">@item.Name</a></li>
+        
+    }
+}
