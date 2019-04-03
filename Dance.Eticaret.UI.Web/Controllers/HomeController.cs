@@ -46,5 +46,11 @@ namespace Dance.Eticaret.UI.Web.Controllers
             }
             
         }
+
+        [Route("Uye-Kayit")]
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
     }
 }
