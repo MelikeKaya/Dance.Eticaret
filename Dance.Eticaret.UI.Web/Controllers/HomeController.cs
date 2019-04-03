@@ -41,10 +41,10 @@ namespace Dance.Eticaret.UI.Web.Controllers
             else
             {
                 //controllerla sayfa arasında veri taşımak için kullanılıyor viewbag
-                ViewBag.Error="Hatalı Kullanıcı veya Şifre"
+                ViewBag.Error = "Hatalı Kullanıcı veya Şifre";
                 return View();
             }
-            return View();
+            
         }
     }
 }
