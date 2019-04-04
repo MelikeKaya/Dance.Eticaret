@@ -30,16 +30,22 @@
                 @{
                     if (Session["LoginUser"] == null)
                     {
-                        <a href="/Uye-Giris">Üye Giriş</a>
+                <p>
+                    <a href="/Uye-Giris">Üye Giriş</a>|
+                    <a href="/Uye-Kayit">Üye Kayıt</a>
+                </p>
+
                     }
                     else
                     {
-                        
-                        //Üye girşi yapılmışsa
+                        var usr = Session["LoginUser"] as Dance.Eticaret.Model.Entity.User;
+
+                        //Üye girişi yapılmışsa
                         <p>
+                            Merhaba @usr.Name @usr.LastName
                             <a href="#">Profilim</a>|
                             <a href="#">Sepetim</a>|
-                            <a href="#">Sipraişlerim</a>|
+                            <a href="#">Siparişlerim</a>|
                         </p>
                     }
                 }
