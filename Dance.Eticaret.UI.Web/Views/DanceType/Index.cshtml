@@ -1,0 +1,57 @@
+﻿@model List<Dance.Eticaret.Model.Entity.DanceLesson>
+@{
+    ViewBag.Title = "Index";
+    var category = (Dance.Eticaret.Model.Entity.DanceType)ViewBag.category;
+}
+
+<h2>E-ticaret Sayfama Hoşgeldiniz</h2>
+
+<h6>@category.Name kategorisindeki ürünler</h6>
+@{
+    foreach (var item in Model)
+    {
+        <div class="productBox">
+            <p class="title">@item.Name</p>
+            <img src="@item.ImageUrl" />
+            <p>
+                @item.Trainer
+            </p>
+            <p>
+                @item.Price.ToString("##.## TL")
+            </p>
+
+            <p>
+                @item.Description
+            </p>
+            <p>
+                <a href="Ders/@item.Name/@item.ID" class="btn btn-success">incele</a>
+            </p>
+            <p>
+                <a href="#" class="btn btn-default"><i class="icon-next"></i>Sepete At</a>
+            </p>
+        </div>
+    }
+}
+<div class="row"></div>
+<style>
+    .productBox {
+        width: 200px;
+        float: left;
+        margin: 10px;
+        border: 2px solid #921717;
+        padding: 10px;
+    }
+
+        .productBox img {
+            width: 100px;
+        }
+
+        .productBox .title {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .productBox p { /*productbox altındaki tüm p'ler'*/
+            text-align: center;
+        }
+</style>

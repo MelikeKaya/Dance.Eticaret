@@ -25,21 +25,25 @@
     }
 }
 
-<form action="/Uye-Giris" method="post">
-    <div class="left">
-        @Html.Label("E-posta Adresiniz: ")
-    </div>
-    <div class="right">
-        @Html.TextBox("Email")
-    </div>
-    <div class="row"></div>
-    <div class="left">
-        @Html.Label("Şifreniz: ")
-    </div>
-    <div class="right">
-        @Html.Password("Password")
-    </div>
-    <button type="submit">Giriş Yap</button>
-</form>
+        <form action="/Uye-Giris" method="post">
+            <div class="left">
+                @Html.Label("E-posta Adresiniz: ")
+            </div>
+            <div class="right">
+                @Html.TextBox("Email")
+            </div>
+            <div class="row"></div>
+            <div class="left">
+                @Html.Label("Şifreniz: ")
+            </div>
+            <div class="right">
+                @Html.Password("Password")
+            </div>
+            <div class="row"></div>
+            <p>
+                <button type="submit">Giriş Yap</button>
+            </p>
+           
+        </form>
 
 

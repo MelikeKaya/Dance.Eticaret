@@ -16,8 +16,8 @@ namespace Dance.Eticaret.Model.Migrations
                         DanceLessonID = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
@@ -30,7 +30,7 @@ namespace Dance.Eticaret.Model.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        DanceTypeID = c.String(),
+                        DanceTypeID = c.Int(nullable: false),
                         Trainer = c.String(),
                         ImageUrl = c.String(),
                         VideoUrl = c.String(),
@@ -39,16 +39,15 @@ namespace Dance.Eticaret.Model.Migrations
                         Tax = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Discount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Kontenjan = c.Int(nullable: false),
-                        IsActive = c.Int(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
-                        DanceType_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.DanceTypes", t => t.DanceType_ID)
-                .Index(t => t.DanceType_ID);
+                .ForeignKey("dbo.DanceTypes", t => t.DanceTypeID)
+                .Index(t => t.DanceTypeID);
             
             CreateTable(
                 "dbo.DanceTypes",
@@ -59,8 +58,8 @@ namespace Dance.Eticaret.Model.Migrations
                         Name = c.String(),
                         IsActive = c.Boolean(nullable: false),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID);
@@ -74,8 +73,8 @@ namespace Dance.Eticaret.Model.Migrations
                         DanceLessonID = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
@@ -94,8 +93,8 @@ namespace Dance.Eticaret.Model.Migrations
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Bank = c.String(),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
@@ -115,8 +114,8 @@ namespace Dance.Eticaret.Model.Migrations
                         TotalDiscount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
@@ -134,8 +133,8 @@ namespace Dance.Eticaret.Model.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID);
@@ -154,8 +153,8 @@ namespace Dance.Eticaret.Model.Migrations
                         IsActive = c.Boolean(nullable: false),
                         ISAdmin = c.Boolean(nullable: false),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID);
@@ -171,8 +170,8 @@ namespace Dance.Eticaret.Model.Migrations
                         Address = c.String(),
                         IsActive = c.String(),
                         CreateDate = c.DateTime(nullable: false),
-                        UpdateDate = c.DateTime(),
                         CreateUserID = c.Int(nullable: false),
+                        UpdateDate = c.DateTime(),
                         UpdateUserID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
@@ -191,7 +190,7 @@ namespace Dance.Eticaret.Model.Migrations
             DropForeignKey("dbo.OrderLessons", "OrderID", "dbo.Orders");
             DropForeignKey("dbo.OrderLessons", "DanceLessonID", "dbo.DanceLessons");
             DropForeignKey("dbo.Baskets", "DanceLessonID", "dbo.DanceLessons");
-            DropForeignKey("dbo.DanceLessons", "DanceType_ID", "dbo.DanceTypes");
+            DropForeignKey("dbo.DanceLessons", "DanceTypeID", "dbo.DanceTypes");
             DropIndex("dbo.UserAddresses", new[] { "UserID" });
             DropIndex("dbo.Orders", new[] { "StatusID" });
             DropIndex("dbo.Orders", new[] { "UserAddressID" });
@@ -199,7 +198,7 @@ namespace Dance.Eticaret.Model.Migrations
             DropIndex("dbo.OrderPayments", new[] { "OrderID" });
             DropIndex("dbo.OrderLessons", new[] { "DanceLessonID" });
             DropIndex("dbo.OrderLessons", new[] { "OrderID" });
-            DropIndex("dbo.DanceLessons", new[] { "DanceType_ID" });
+            DropIndex("dbo.DanceLessons", new[] { "DanceTypeID" });
             DropIndex("dbo.Baskets", new[] { "DanceLessonID" });
             DropTable("dbo.UserAddresses");
             DropTable("dbo.Users");

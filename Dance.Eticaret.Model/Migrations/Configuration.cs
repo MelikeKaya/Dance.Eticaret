@@ -9,7 +9,7 @@ namespace Dance.Eticaret.Model.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Dance.Eticaret.Model.DanceDb context)

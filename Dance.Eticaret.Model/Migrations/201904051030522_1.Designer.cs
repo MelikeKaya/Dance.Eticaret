@@ -13,7 +13,7 @@ namespace Dance.Eticaret.Model.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201904021043416_1"; }
+            get { return "201904051030522_1"; }
         }
         
         string IMigrationMetadata.Source

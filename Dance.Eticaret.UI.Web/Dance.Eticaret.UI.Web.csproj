@@ -139,6 +139,10 @@
     <Compile Include="Areas\Admin\Controllers\DanceTypesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Controllers\Base\DanceControllerBase.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
+    <Compile Include="Controllers\DanceLessonController.cs" />
+    <Compile Include="Controllers\DanceTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,11 +206,15 @@
     <Content Include="Views\Home\GetMenu.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\CreateUser.cshtml" />
+    <Content Include="Views\DanceLesson\Detail.cshtml" />
+    <Content Include="Views\DanceType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

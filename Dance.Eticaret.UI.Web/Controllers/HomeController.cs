@@ -1,5 +1,6 @@
 ﻿using Dance.Eticaret.Model;
 using Dance.Eticaret.Model.Entity;
+using Dance.Eticaret.UI.Web.Controllers.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,13 @@ using System.Web.Mvc;
 
 namespace Dance.Eticaret.UI.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : DanceControllerBase
     {
         DanceDb db = new DanceDb();
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.IsLogin = this.IsLogin;
             var data = db.DanceLessons.OrderByDescending(x => x.CreateDate).Take(5).ToList();
             return View(data);
         }
@@ -40,6 +42,7 @@ namespace Dance.Eticaret.UI.Web.Controllers
 
             if (users.Count==1)
             {
+                Session["LoginUserID"] = users.FirstOrDefault().ID;
                 Session["LoginUser"] = users.FirstOrDefault();
                 return Redirect("/");
             }
