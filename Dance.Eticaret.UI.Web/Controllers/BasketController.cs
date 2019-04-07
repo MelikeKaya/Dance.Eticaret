@@ -10,6 +10,8 @@ namespace Dance.Eticaret.UI.Web.Controllers
 {
     public class BasketController : DanceControllerBase
     {
+
+        DanceDb db = new DanceDb();
         // GET: Basket
         [HttpPost]
         public JsonResult AddProduct(int lessonID,int quantity)
@@ -23,8 +25,23 @@ namespace Dance.Eticaret.UI.Web.Controllers
                 Quantity = quantity,
                 UserId = LoginUserID
             });
+            var rt= db.SaveChanges();
+            return Json(rt,JsonRequestBehavior.AllowGet);
+        }
+        [Route("Sepetim")]
+        public ActionResult Index()
+        {
+           
+            var data = db.Baskets.Include("DanceLessons").Where(x => x.UserId == LoginUserID).ToList();
+            return View(data);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var deleteItem = db.Baskets.Where(x => x.ID == id).FirstOrDefault();
+            db.Baskets.Remove(deleteItem);
             db.SaveChanges();
-            return Json("");
+            return RedirectToAction("Index");
         }
     }
 }

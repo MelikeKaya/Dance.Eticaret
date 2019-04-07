@@ -7,7 +7,7 @@
 <h2>E-ticaret Sayfama Hoşgeldiniz</h2>
 
 <h6>Eklenen Son 5 Dans</h6>
-@{ 
+@{
     foreach (var item in Model)
     {
         <div class="productBox">
@@ -19,46 +19,71 @@
             <p>
                 @item.Price.ToString("##.## TL")
             </p>
-        
+
             <p>
                 @item.Description
             </p>
             <p>
                 <a href="Ders/@item.Name/@item.ID" class="btn btn-success">incele</a>
-                @{ 
+                @{
                     if (isLogin)
                     {
-                         <a href="#" class="btn btn-default"><i class="icon-next"></i>Sepete At</a>
+                        <a href="/Sepetim" class="btn btn-default addBasket"><i class="icon-next"></i>Sepete At</a>
                     }
                 }
-            
-                
+
+
             </p>
         </div>
     }
 }
+<div  id="danceModal">
+    Ürününüz Sepete Atılmıştır
+</div>
+
 <div class="row"></div>
 <style>
-    .productBox{
-        width:200px;
-        float:left;
-        margin:10px;
-        border:2px solid #921717;
-        padding:10px;
-       
+    .productBox {
+        width: 200px;
+        float: left;
+        margin: 10px;
+        border: 2px solid #921717;
+        padding: 10px;
     }
 
-    .productBox img{
-        width:100px;
+        .productBox img {
+            width: 100px;
+        }
 
-    }
-    .productBox .title{
-        font-weight:bold;
-        text-align:center;
-    }
+        .productBox .title {
+            font-weight: bold;
+            text-align: center;
+        }
 
-    .productBox p{ /*productbox altındaki tüm p'ler'*/
-        text-align:center;
-        
-    }
+        .productBox p { /*productbox altındaki tüm p'ler'*/
+            text-align: center;
+        }
 </style>
+
+@*@section script{
+    <script type="text/javascript">
+  $( function() {
+      $( "#danceModal" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+
+        $(".addBasket").on("click", function () {
+            $("#danceModal").dialog("open");
+            return false;
+    });
+  });
+    </script>
+}*@
