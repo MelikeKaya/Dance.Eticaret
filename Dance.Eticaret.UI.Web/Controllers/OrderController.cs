@@ -35,7 +35,39 @@ namespace Dance.Eticaret.UI.Web.Controllers
             entity.IsActive = true;
 
             db.UserAddresses.Add(entity);
+            db.SaveChanges();
 
+            return View();
+        }
+
+        public ActionResult CreateOrder(int id)
+        {
+            Order order = new Order();
+            var sepet = db.Baskets.Include("DanceLesson").Where(x => x.UserId == LoginUserID).ToArray();
+            order.CreateDate = DateTime.Now;
+            order.CreateUserID = LoginUserID;
+            order.StatusID = 2;
+            order.TotalLessonPrice = sepet.Sum(x => x.DanceLesson.Price);
+            order.TotalTaxPrice = sepet.Sum(x => x.DanceLesson.Tax);
+            order.TotalDiscount = sepet.Sum(x => x.DanceLesson.Discount);
+            order.TotalPrice = order.TotalTaxPrice + order.TotalLessonPrice;
+            order.UserAddressID = id;
+            order.UserID = LoginUserID;
+            order.OrderLessons = new List<OrderLesson>();
+
+            foreach (var item in sepet)
+            {
+                order.OrderLessons.Add(new OrderLesson
+                {
+                    CreateDate = DateTime.Now,
+                    CreateUserID = LoginUserID,
+                    DanceLessonID=item.DanceLessonID,
+                    Quantity=item.Quantity
+                
+                });
+            }
+            db.Orders.Add(order);
+            db.SaveChanges();
             return View();
         }
     }

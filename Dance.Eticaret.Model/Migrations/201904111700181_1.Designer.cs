@@ -7,13 +7,13 @@ namespace Dance.Eticaret.Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ds : IMigrationMetadata
+    public sealed partial class _1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ds));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904111120232_ds"; }
+            get { return "201904111700181_1"; }
         }
         
         string IMigrationMetadata.Source
