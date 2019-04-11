@@ -16,7 +16,7 @@ namespace Dance.Eticaret.Model
 
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserAddress> userAddresses { get; set; }
+        public DbSet<UserAddress> UserAddresses { get; set; }
         public DbSet<DanceType> DanceTypes { get; set; }
         public DbSet<DanceLesson> DanceLessons { get; set; }
         public DbSet<Status> Statuses { get; set; }

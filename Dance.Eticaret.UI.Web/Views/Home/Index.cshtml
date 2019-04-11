@@ -24,11 +24,11 @@
                 @item.Description
             </p>
             <p>
-                <a href="Ders/@item.Name/@item.ID" class="btn btn-success">incele</a>
+                <a href="Ders/@item.Name/@item.ID" class="btn btn-success">İncele</a>
                 @{
                     if (isLogin)
                     {
-                        <a href="/Sepetim" class="btn btn-default addBasket"><i class="icon-next"></i>Sepete At</a>
+                        <a href="#" data-pID="@item.ID" class="btn btn-default addBasket"><i class="icon-next"></i>Sepete At</a>
                     }
                 }
 
@@ -37,8 +37,9 @@
         </div>
     }
 }
-<div  id="danceModal">
+<div  id="danceModal" title="Teşekkürler :)">
     Ürününüz Sepete Atılmıştır
+    <a href="/Sepetim" class="btn btn-default">Sepete Git</a>
 </div>
 
 <div class="row"></div>
@@ -65,25 +66,29 @@
         }
 </style>
 
-@*@section script{
+@section Scripts{
     <script type="text/javascript">
-  $( function() {
-      $( "#danceModal" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
+        $(function () {
+            $("#danceModal").dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
 
-        $(".addBasket").on("click", function () {
-            $("#danceModal").dialog("open");
-            return false;
-    });
-  });
+            $(".addBasket").on("click", function () {
+                var pid = $(this).attr("data-pID");
+                $.post("/Basket/AddProduct?lessonID=" + pid +"&quantity=1", function (data) {
+                    $("#danceModal").dialog("open");
+                });
+              
+                return false;
+            });
+        });
     </script>
-}*@
+}

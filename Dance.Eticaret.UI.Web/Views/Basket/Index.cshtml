@@ -4,25 +4,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DanceLesson.Name)
+          Eğitmen
+        </th>
+        
+        <th>
+            Dans Türü
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateUserID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdateUserID)
+            Adet
         </th>
         <th></th>
     </tr>
@@ -30,31 +19,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DanceLesson.Name)
+            @Html.DisplayFor(modelItem => item.DanceLesson.Trainer)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserId)
+            @Html.DisplayFor(modelItem=>item.DanceLesson.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Quantity)
         </td>
+      
         <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateUserID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdateUserID)
-        </td>
-        <td>
-           
             @Html.ActionLink("Sil", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
 
 </table>
+
+<a href="/Siparisver" class="btn btn-primary"><i class="fas fa-dollar-sign"></i> Satın Al</a>

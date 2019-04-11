@@ -28,11 +28,13 @@ namespace Dance.Eticaret.UI.Web.Controllers
             var rt= db.SaveChanges();
             return Json(rt,JsonRequestBehavior.AllowGet);
         }
+
+
         [Route("Sepetim")]
         public ActionResult Index()
         {
            
-            var data = db.Baskets.Include("DanceLessons").Where(x => x.UserId == LoginUserID).ToList();
+            var data = db.Baskets.Include("DanceLesson").Where(x => x.UserId == LoginUserID).ToList();
             return View(data);
         }
 
